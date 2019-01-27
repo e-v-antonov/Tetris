@@ -14,9 +14,25 @@ namespace Tetris
 {
     public partial class Form1 : Form
     {
-
-        int x, y;
-        int zapx, zapy;
+        string[] list_Multiplier  = {"00010203",   //список множителей
+                              "00011102",
+                              "00011112",
+                              "00011121",
+                              "00100102",
+                              "00100111",
+                              "00101112",
+                              "00101121",
+                              "00102011",
+                              "00102030",
+                              "10011112",
+                              "10011121",
+                              "10110102",
+                              "10110212",
+                              "10200111"};
+        int choice_Multiplier; //выбор множителя
+        string string_Multiplier;   //строка множителей
+        int x_Multiplier, y_Multiplier;   //множители координат х и у
+        char [] digit_Multiplier = new char [8]; //цифры множители
 
         public Form1()
         {
@@ -25,115 +41,49 @@ namespace Tetris
 
         private void pictureBox1_Resize(object sender, EventArgs e)
         {
-            //Invalidate();
+            Invalidate();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            ////
-
-
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 52, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 78, 0, 24, 24);
-
-
-            //
-            //
-            //
-            //
-
-
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 26, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 52, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 78, 24, 24);
-
-
-            //
-            //
-
-
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 26, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 26, 24, 24);
-
-
-            ////////
-            //
-
-
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 52, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 26, 24, 24);
-
-
-            //
-            ////
-            //
-
-
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 26, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 52, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 26, 24, 24);
-
-
-            //
-            ////
-            //
-
-            //e.Graphics.FillRectangle(Brushes.Red, 0, 26, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 0, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 26, 24, 24);
-            //e.Graphics.FillRectangle(Brushes.Red, 26, 52, 24, 24);
-
-
-            //
-            //////
-
-            for (int i = 0; i < 4; i++)
-            {
-                Random rnd = new Random();
-                Random rnd1 = new Random();
-
-                x = rnd.Next(0, 3);
-                y = rnd.Next(0, 3);
-
-
-                //e.Graphics.DrawString(x.ToString(), Font, SystemBrushes.WindowText, i + 5, 0);
-                //panel1.Refresh();
-                e.Graphics.FillEllipse(Brushes.Red, new Rectangle(x * 24, x * 24, 24, 24));
-
+            Random rnd = new Random();
+            choice_Multiplier = rnd.Next(0, 15);
+            string_Multiplier = list_Multiplier[choice_Multiplier];
+            digit_Multiplier = string_Multiplier.ToArray();            
+            
+            for (int i = 0; i < digit_Multiplier.Length; i++)
+            {                
+                if ((i == 0) ||(i == 2) || (i == 4) || (i == 6))
+                {
+                    x_Multiplier = Convert.ToInt32(digit_Multiplier[i].ToString());
+                    continue;                                      
+                }
+                else
+                {
+                    y_Multiplier = Convert.ToInt32(digit_Multiplier[i].ToString());
+                    e.Graphics.FillRectangle(Brushes.Red, x_Multiplier * 24, y_Multiplier * 24, 24, 24);
+                }
             }
-
-            //e.Graphics.FillEllipse(Brushes.Red, new Rectangle(0 * 24, 0 * 24, 24, 24));
-            //e.Graphics.FillEllipse(Brushes.Red, new Rectangle(1 * 24, 0 * 24, 24, 24));
-            //e.Graphics.FillEllipse(Brushes.Red, new Rectangle(2 * 24, 0 * 24, 24, 24));
-            //e.Graphics.FillEllipse(Brushes.Red, new Rectangle(3 * 24, 0 * 24, 24, 24));
-
-
-            //00010203
-            //00011102
-            //00011112
-            //00011121                        
-            //00100102
-            //00100111
-            //00101112            
-            //00101121
-            //00102011                      
-            //00102030
-
-            //10011112
-            //10011121
-            //10110102
-            //10110212            
-            //10200111
-
-
         }
     }
 }
+
+
+
+
+//00010203
+//00011102
+//00011112
+//00011121                        
+//00100102
+//00100111
+//00101112            
+//00101121
+//00102011                      
+//00102030
+
+//10011112
+//10011121
+//10110102
+//10110212            
+//10200111
