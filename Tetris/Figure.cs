@@ -26,7 +26,7 @@ namespace Tetris
                               "10110212",
                               "10200111"};
         int choice_Multiplier; //выбор множителя
-        string string_Multiplier;   //строка множителей
+        string string_Multiplier;  //строка множителей
         int x_Multiplier, y_Multiplier;   //множители координат х и у
         char[] digit_Multiplier = new char[8]; //цифры множители
 
@@ -50,6 +50,14 @@ namespace Tetris
                     e.Graphics.FillRectangle(Brushes.Red, x_Multiplier * 24, y_Multiplier * 24, 24, 24);
                 }
             }
+
+            
+        }
+
+        public void FigureMovement(object sender, PaintEventArgs e, int movement)
+        {
+            Movement GiveArray = new Movement();
+            GiveArray.MovementDown(sender, e, digit_Multiplier, movement);
         }
     }
 }
