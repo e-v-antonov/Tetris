@@ -14,8 +14,9 @@ namespace Tetris
 {
     public partial class Form1 : Form
     {
-        int movement = 0;
+        int movementFigure = 0;
         Figure figure = new Figure();
+        Movement movement = new Movement();
         bool oneDraw = true;
 
         public Form1()
@@ -37,15 +38,19 @@ namespace Tetris
             }
             else
             {
-                movement += 15;
-                figure.FigureMovement(sender, e, movement);
+                movementFigure += 15;                
+                movement.MovementDown(sender, e, movementFigure);
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             panel1.Refresh();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

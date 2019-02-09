@@ -11,9 +11,9 @@ namespace Tetris
     class Movement : Figure
     {
         int x_Multiplier, y_Multiplier;
-
-        public void MovementDown(object sender, PaintEventArgs e, char[] digit_Multiplier, int movement)
-        {
+        
+        public void MovementDown(object sender, PaintEventArgs e, int movement)
+        {          
             for (int i = 0; i < digit_Multiplier.Length; i++)
             {
                 if ((i == 0) || (i == 2) || (i == 4) || (i == 6))

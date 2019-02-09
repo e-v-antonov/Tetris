@@ -28,14 +28,14 @@ namespace Tetris
         int choice_Multiplier; //выбор множителя
         string string_Multiplier;  //строка множителей
         int x_Multiplier, y_Multiplier;   //множители координат х и у
-        char[] digit_Multiplier = new char[8]; //цифры множители
+        public static char[] digit_Multiplier = new char[8]; //цифры множители
 
-        public void Draw(object sender, PaintEventArgs e)
+        public void Draw(object sender, PaintEventArgs e)   //рисование рандомной фигуры
         {
             Random rnd = new Random();
-            choice_Multiplier = rnd.Next(0, 15);
-            string_Multiplier = list_Multiplier[choice_Multiplier];
-            digit_Multiplier = string_Multiplier.ToArray();
+            choice_Multiplier = rnd.Next(0, 15);    
+            string_Multiplier = list_Multiplier[choice_Multiplier]; 
+            digit_Multiplier = string_Multiplier.ToArray(); 
 
             for (int i = 0; i < digit_Multiplier.Length; i++)
             {
@@ -52,12 +52,6 @@ namespace Tetris
             }
 
             
-        }
-
-        public void FigureMovement(object sender, PaintEventArgs e, int movement)
-        {
-            Movement GiveArray = new Movement();
-            GiveArray.MovementDown(sender, e, digit_Multiplier, movement);
         }
     }
 }
