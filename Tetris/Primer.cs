@@ -46,14 +46,14 @@
 //                    draw(f.x + i, f.y + j, f.pix[i, j]);
 //        }
 
-//        private void button1_Click(object sender, EventArgs e)
+//        private void button1_Click(object sender, EventArgs e)  //нажатие на кнопку старт
 //        {
 //            started = true;
 //            score = 0;
-//            ar = new int[MAXX, MAXY];
+//            ar = new int[MAXX, MAXY];   //задаем массив 10х15
 //            upd_score();
 //            figure = null;
-//            timer1.Enabled = true;
+//            timer1.Enabled = true;  //запускаем таймер
 //        }
 
 //        private int get_ar(int x, int y)
@@ -135,7 +135,7 @@
 //            }
 //        }
 
-//        private void timer1_Tick(object sender, EventArgs e)
+//        private void timer1_Tick(object sender, EventArgs e)    //работа таймера
 //        {
 //            if (figure == null)
 //            {

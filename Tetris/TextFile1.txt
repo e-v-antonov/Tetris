@@ -1,0 +1,10 @@
+﻿Нажатие на кнопку:
+	started = true;
+    score = 0;
+    ar = new int[MAXX, MAXY];   //задаем массив 10х15
+    upd_score();
+    figure = null;
+	Запускаем таймер
+
+Тик таймера
+	так как figure = null тогда figure = new Figure();

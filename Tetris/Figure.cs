@@ -29,9 +29,18 @@ namespace Tetris
         string string_Multiplier;  //строка множителей
         int x_Multiplier, y_Multiplier;   //множители координат х и у
         public static char[] digit_Multiplier = new char[8]; //цифры множители
+        public static  int[,] setka = new int[15, 10];
 
         public void Draw(object sender, PaintEventArgs e)   //рисование рандомной фигуры
         {
+            for (int i = 0; i < 15; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    setka[i, j] = 0;
+                }
+            }
+
             Random rnd = new Random();
             choice_Multiplier = rnd.Next(0, 15);    
             string_Multiplier = list_Multiplier[choice_Multiplier]; 
@@ -48,10 +57,9 @@ namespace Tetris
                 {
                     y_Multiplier = Convert.ToInt32(digit_Multiplier[i].ToString());
                     e.Graphics.FillRectangle(Brushes.Red, x_Multiplier * 24, y_Multiplier * 24, 24, 24);
+                    setka[x_Multiplier, y_Multiplier] = 1;
                 }
             }
-
-            
         }
     }
 }

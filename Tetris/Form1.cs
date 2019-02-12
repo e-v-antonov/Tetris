@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace Tetris
 {
     public partial class Form1 : Form
     {
-       // int movementFigure = 0;
         Figure figure = new Figure();
         Movement movement = new Movement();
+        PressKey presskey = new PressKey();
         bool oneDraw = true;
+        
 
         public Form1()
         {
-            InitializeComponent();
+            Program.form1 = this;
+            InitializeComponent();            
         }
 
         private void pictureBox1_Resize(object sender, EventArgs e)
@@ -44,12 +45,19 @@ namespace Tetris
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            panel1.Refresh();
+           // if (movement.allow_Movement != false)
+                panel1.Refresh();
+            //else
+            //{
+            //    //timer1.Enabled = false;
+            //    panel1.Refresh();
+            //}
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            presskey.PressMovement(sender, e);
+            panel1.Refresh();
         }
     }
 }
